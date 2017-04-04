@@ -7,7 +7,7 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/jetstack/kube-lego/pkg/ingress"
-	"github.com/jetstack/kube-lego/pkg/kubelego_const"
+	kubelego "github.com/jetstack/kube-lego/pkg/kubelego_const"
 
 	"k8s.io/apimachinery/pkg/util/intstr"
 	"k8s.io/client-go/kubernetes"
@@ -25,6 +25,7 @@ type KubeLego struct {
 	legoServiceNameGce           string
 	legoSupportedIngressClass    []string
 	legoSupportedIngressProvider []string
+	legoHealthCheckPath          string
 	legoHTTPPort                 intstr.IntOrString
 	legoCheckInterval            time.Duration
 	legoMinimumValidity          time.Duration
