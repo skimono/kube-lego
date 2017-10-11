@@ -7,7 +7,7 @@ GO_VERSION=1.8
 GOOS := linux
 GOARCH := amd64
 
-DOCKER_IMAGE=${ACCOUNT}/${APP_NAME}
+DOCKER_IMAGE=cirwin/${APP_NAME}-health
 
 BUILD_DIR=_build
 TEST_DIR=_test
@@ -53,9 +53,9 @@ test: test_prepare $(PACKAGES)
 	$(eval PKG := ./$*)
 	$(eval PKG_CLEAN := $(shell echo "$*" | sed "s#^p#.p#" | sed "s#/#-#g"))
 	@echo "test $(PKG_CLEAN) ($(PKG))"
-	bash -o pipefail -c "go test -v -coverprofile=$(TEST_DIR)/coverage$(PKG_CLEAN).txt -covermode count $(PKG) | tee $(TEST_DIR)/test$(PKG_CLEAN).out"
-	cat $(TEST_DIR)/test$(PKG_CLEAN).out | go2xunit > $(TEST_DIR)/test$(PKG_CLEAN).xml
-	gocover-cobertura < $(TEST_DIR)/coverage$(PKG_CLEAN).txt > $(TEST_DIR)/coverage$(PKG_CLEAN).xml
+#	bash -o pipefail -c "go test -v -coverprofile=$(TEST_DIR)/coverage$(PKG_CLEAN).txt -covermode count $(PKG) | tee $(TEST_DIR)/test$(PKG_CLEAN).out"
+#	cat $(TEST_DIR)/test$(PKG_CLEAN).out | go2xunit > $(TEST_DIR)/test$(PKG_CLEAN).xml
+#	gocover-cobertura < $(TEST_DIR)/coverage$(PKG_CLEAN).txt > $(TEST_DIR)/coverage$(PKG_CLEAN).xml
 
 build: depend version
 	CGO_ENABLED=0 GOOS=$(GOOS) GOARCH=$(GOARCH) go build \
