@@ -156,6 +156,14 @@ You can inspect the trace sample running
 `$ go tool trace kube-lego.trace`
 
 
+## Releasing
+
+You can use the Makefile to create new releases.
+
+```
+VERSION=0.1.6-superhuman-X make version publish
+```
+
 ## Authors
 
 * Christian Simon for [Jetstack Ltd](http://www.jetstack.io)
